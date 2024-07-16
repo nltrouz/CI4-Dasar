@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" href="assets/images/favicon.svg" type="image/x-icon" />
-    <title>Presensi | CI4</title>
+    <title><?= $title ?></title>
 
     <!-- ========== All CSS files linkup ========= -->
     <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap.min.css') ?> " />
@@ -30,7 +30,7 @@
     <aside class="sidebar-nav-wrapper">
         <div class="navbar-logo">
             <a href="layout">
-                <img src="assets/images/logo/logo.svg" alt="logo" />
+                <img src="<?= base_url('assets/images/logo/logo.svg') ?>" alt="logo" />
             </a>
         </div>
         <nav class="sidebar-nav">
@@ -61,6 +61,42 @@
                     </a>
                 </li>
 
+                <li class="nav-item">
+                    <a href="invoice.html mb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-x">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
+                            <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5" />
+                            <path d="M22 22l-5 -5" />
+                            <path d="M17 22l5 -5" />
+                        </svg>
+                        <span class="text">Ketidakhadiran</span>
+                    </a>
+                </li>
+
+                <li class="nav-item nav-item-has-children mb-2">
+                    <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_1" aria-controls="ddmenu_1" aria-expanded="false" aria-label="Toggle navigation">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                            <path d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2" />
+                            <path d="M9 3m0 2a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v0a2 2 0 0 1 -2 2h-2a2 2 0 0 1 -2 -2z" />
+                            <path d="M9 17v-5" />
+                            <path d="M12 17v-1" />
+                            <path d="M15 17v-3" />
+                        </svg>
+                        <span class="text">Master Data</span>
+                    </a>
+                    <ul id="ddmenu_1" class="collapse dropdown-nav">
+                        <li>
+                            <a href="index.html"> Rekap Harian </a>
+                        </li>
+
+                        <li>
+                            <a href="index.html"> Rekap Bulanan </a>
+                        </li>
+                    </ul>
+                </li>
+
                 <li class="nav-item nav-item-has-children mb-2">
                     <a href="#0" class="collapsed" data-bs-toggle="collapse" data-bs-target="#ddmenu_1" aria-controls="ddmenu_1" aria-expanded="false" aria-label="Toggle navigation">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-report-analytics">
@@ -82,19 +118,6 @@
                             <a href="index.html"> Rekap Bulanan </a>
                         </li>
                     </ul>
-                </li>
-
-                <li class="nav-item">
-                    <a href="invoice.html mb-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-user-x">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                            <path d="M8 7a4 4 0 1 0 8 0a4 4 0 0 0 -8 0" />
-                            <path d="M6 21v-2a4 4 0 0 1 4 -4h3.5" />
-                            <path d="M22 22l-5 -5" />
-                            <path d="M17 22l5 -5" />
-                        </svg>
-                        <span class="text">Ketidakhadiran</span>
-                    </a>
                 </li>
 
                 <li class="nav-item nav-item-has-children mb-2">
@@ -152,11 +175,11 @@
                                     <div class="profile-info">
                                         <div class="info">
                                             <div class="image">
-                                                <img src="assets/images/profile/profile-image.png" alt="" />
+                                                <img src="<?= base_url('assets/images/profile/profile-image.png') ?>" alt="" />
                                             </div>
                                             <div>
-                                                <h6 class="fw-500">Adam Joe</h6>
-                                                <p>Admin</p>
+                                                <h6 class="fw-500 text-uppercase"><?= session()->get('username') ?></h6>
+                                                <p><?= session()->get('role_id') ?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -165,17 +188,17 @@
                                     <li>
                                         <div class="author-info flex items-center !p-1">
                                             <div class="image">
-                                                <img src="assets/images/profile/profile-image.png" alt="image">
+                                                <img src="<?= base_url('assets/images/profile/profile-image.png') ?>" alt="image">
                                             </div>
                                             <div class="content">
-                                                <h4 class="text-sm">Adam Joe</h4>
-                                                <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">Email@gmail.com</a>
+                                                <h4 class="text-sm text-uppercase">Aveline</h4>
+                                                <a class="text-black/40 dark:text-white/40 hover:text-black dark:hover:text-white text-xs" href="#">tetsuya@gmail.com</a>
                                             </div>
                                         </div>
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="#0">
+                                        <a href="/">
                                             <i class="lni lni-user"></i> View Profile
                                         </a>
                                     </li>
@@ -192,7 +215,7 @@
                                     </li>
                                     <li class="divider"></li>
                                     <li>
-                                        <a href="#0"> <i class="lni lni-exit"></i> Sign Out </a>
+                                        <a href="/logout"> <i class="lni lni-exit"></i> Sign Out </a>
                                     </li>
                                 </ul>
                             </div>
@@ -212,7 +235,7 @@
                     <div class="row align-items-center">
                         <div class="col-md-6">
                             <div class="title">
-                                <h2>Title</h2>
+                                <h2><?= $title ?></h2>
                             </div>
                         </div>
                         <!-- end col -->
